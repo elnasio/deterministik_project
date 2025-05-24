@@ -1,0 +1,40 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+env/
+ENV/
+.venv/
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Python dependencies
+*.egg-info/
+pip-wheel-metadata/
+
+# Test coverage
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+.cache
+
+# Migrations (opsional, tergantung tools)
+alembic/versions/
+
+# Static/compiled
+staticfiles/

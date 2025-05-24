@@ -10,9 +10,14 @@
 ✅ Predict next number based on last learned pattern (`/predict`)  
 ✅ Analyze any number sequence without learning it (`/analyze`)  
 ✅ Support for basic patterns:
-- Arithmetic
-- Second-order (level 2 difference)
-- Prime numbers
+- Arithmetic ➕  
+- Second-order (level 2 difference) 🔁  
+- Prime numbers 🔢  
+- Geometric sequences 📈  
+- Fibonacci sequences 🌀  
+- Even numbers 🔵  
+- Odd numbers 🔺  
+- Factorials (!)
 
 ---
 

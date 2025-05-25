@@ -37,7 +37,7 @@ def get_state():
 
 @router.post("/analyze", response_model=BaseResponse)
 def analyze(req: AnalyzeRequest = Body(...)):
-    result = learner_service.analyze_sequence(req.numbers, req.count)
+    result = learner_service.analyze_sequence(req.numbers, req.count, req.degree)
     if not result.get("next_number"):
         return BaseResponse(success=False, message="Unable to detect pattern.", data=result)
     return BaseResponse(success=True, message="Pattern analysis successful.", data=result)

@@ -44,11 +44,16 @@ class PatternLearner:
                 if len(set(level2_diffs)) == 1:
                     self.level2_diff = level2_diffs[0]
 
-    def analyze(self, numbers: list[int], count: int = 1) -> dict:
+    def analyze(self, numbers: list[int], count: int = 1, degree: int = None) -> dict:
         for checker in ALL_ANALYZERS:
-            result = checker(numbers, count)
+            if checker.__name__ == "analyze_polynomial":
+                result = checker(numbers, count, degree)
+            else:
+                result = checker(numbers, count)
+
             if result:
                 return result
+
         return {"pattern": "unknown", "next_number": None}
 
     def next_prime(self, n: int) -> int:

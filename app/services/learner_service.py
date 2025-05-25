@@ -19,8 +19,8 @@ class LearnerService:
     def get_state(self) -> dict:
         return self.learner.get_state()
 
-    def analyze_sequence(self, numbers: list[int], count: int = 1) -> dict:
-        return self.learner.analyze(numbers, count)
+    def analyze_sequence(self, numbers: list[int], count: int = 1, degree: int | None = None):
+        return self.learner.analyze(numbers, count, degree)
 
 
 learner_service = LearnerService()

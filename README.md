@@ -1,3 +1,7 @@
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=flat-square)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)
+
 # 📊 Pattern Learner API
 
 🚀 A simple and powerful API built with FastAPI to detect, learn, and predict mathematical number patterns.
@@ -9,15 +13,31 @@
 ✅ Learn number sequences (`/learn`)  
 ✅ Predict next number based on last learned pattern (`/predict`)  
 ✅ Analyze any number sequence without learning it (`/analyze`)  
-✅ Support for basic patterns:
+✅ Support for rich pattern detection:
 - Arithmetic ➕  
-- Second-order (level 2 difference) 🔁  
+- Second-order difference 🔁  
 - Prime numbers 🔢  
 - Geometric sequences 📈  
-- Fibonacci sequences 🌀  
+- Fibonacci numbers 🌀  
 - Even numbers 🔵  
 - Odd numbers 🔺  
-- Factorials (!)
+- Factorials (!)  
+- Triangular numbers 🔺🔺  
+- Cubic numbers 🧊  
+- Polynomial patterns (deg 2+) 🧮  
+- Pascal triangle row 📐  
+- Flattened Pascal grid 📊  
+- Power series (baseⁿ) ⚡  
+- Bit-pattern (2ⁿ−1) 💡  
+- Interleaved patterns 🔀  
+- Digit repetition ⏸️  
+- Palindromes 🔁  
+- Digit-sequence growth (e.g. 123, 1234) 🔼  
+- Digit-compression sum (e.g. 10 → 1) ♻️  
+- Noise-tolerant arithmetic 🌫️  
+- Mirror/mountain digits ⛰️  
+- Digit logic (first + last = middle) 🧠  
+- Edge digit multiplication & odd digit count 🧩
 
 ---
 

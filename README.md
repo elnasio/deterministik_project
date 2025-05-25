@@ -30,14 +30,16 @@
 - Power series (baseⁿ) ⚡  
 - Bit-pattern (2ⁿ−1) 💡  
 - Interleaved patterns 🔀  
+- Interleaved multi-way patterns 🔀🔀  
 - Digit repetition ⏸️  
 - Palindromes 🔁  
 - Digit-sequence growth (e.g. 123, 1234) 🔼  
 - Digit-compression sum (e.g. 10 → 1) ♻️  
 - Noise-tolerant arithmetic 🌫️  
 - Mirror/mountain digits ⛰️  
-- Digit logic (first + last = middle) 🧠  
-- Edge digit multiplication & odd digit count 🧩
+- Digit-sequential logic (first+last=middle) 🧠  
+- Edge digit multiplication & odd digit count 🧩  
+- Debug/fallback analysis 🐞  
 
 ---
 

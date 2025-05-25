@@ -1,19 +1,28 @@
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=flat-square)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)
-
 # 📊 Pattern Learner API
 
-🚀 A simple and powerful API built with FastAPI to detect, learn, and predict mathematical number patterns.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/) 
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-brightgreen?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+🚀 **Pattern Learner API** is the most complete deterministic pattern detection API built with FastAPI.  
+Predict, analyze, validate, and learn all kinds of number patterns—no machine learning involved.
 
 ---
 
-## 📦 Features
+## ✨ Features
 
-✅ Learn number sequences (`/learn`)  
-✅ Predict next number based on last learned pattern (`/predict`)  
-✅ Analyze any number sequence without learning it (`/analyze`)  
-✅ Support for rich pattern detection:
+- ✅ Learn number sequences (`/learn`)
+- ✅ Predict next number(s) from learned pattern (`/predict`)
+- ✅ Analyze any sequence without learning (`/analyze`)
+- ✅ Validate predictions (`/validate`)
+- ✅ Get current pattern state (`/state`)
+- ✅ Reset learning state (`/reset`)
+- 🧩 Modular, testable, and blazing-fast
+
+---
+
+## 🧠 Supported Patterns
+
 - Arithmetic ➕  
 - Second-order difference 🔁  
 - Prime numbers 🔢  
@@ -24,60 +33,42 @@
 - Factorials (!)  
 - Triangular numbers 🔺🔺  
 - Cubic numbers 🧊  
-- Polynomial patterns (deg 2+) 🧮  
-- Pascal triangle row 📐  
+- Polynomial patterns (deg ≥2) 🧮  
+- Pascal triangle 📐  
 - Flattened Pascal grid 📊  
 - Power series (baseⁿ) ⚡  
 - Bit-pattern (2ⁿ−1) 💡  
-- Interleaved patterns 🔀  
-- Interleaved multi-way patterns 🔀🔀  
-- Digit repetition ⏸️  
+- Interleaved multi-way 🔀  
+- Repeating/cyclic ⏸️  
 - Palindromes 🔁  
-- Digit-sequence growth (e.g. 123, 1234) 🔼  
-- Digit-compression sum (e.g. 10 → 1) ♻️  
+- Digit-sequence growth 🔼  
+- Digit-compression sum ♻️  
 - Noise-tolerant arithmetic 🌫️  
 - Mirror/mountain digits ⛰️  
-- Digit-sequential logic (first+last=middle) 🧠  
-- Edge digit multiplication & odd digit count 🧩  
-- Debug/fallback analysis 🐞  
-
----
-
-## 🧠 How It Works
-
-- **/learn**: Teaches the system a sequence.
-- **/predict**: Predicts the next number from the last learned pattern.
-- **/analyze**: Tests any sequence (even without learning it) and returns its pattern type and prediction.
-- **/state**: Returns the current learned state.
-- **/reset**: Clears the learned sequence.
+- Digit logic 🧠  
+- Digit multiplication & odd count 🧩
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone & Install
 ```bash
 git clone https://github.com/your-username/pattern-ai-fastapi.git
 cd pattern-ai-fastapi
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-### 2. Run Locally
-```bash
 uvicorn app.main:app --reload
 ```
 
-### 3. Open in Browser
-```
-http://localhost:8000/docs
-```
-Use Swagger UI to interact with all endpoints 🎯
+Open: http://localhost:8000/docs
 
 ---
 
 ## 📮 Example Requests
 
-### 🔹 Learn
+### /learn
+
 ```json
 POST /learn
 {
@@ -85,12 +76,14 @@ POST /learn
 }
 ```
 
-### 🔹 Predict
+### /predict
+
 ```http
 GET /predict
 ```
 
-### 🔹 Analyze
+### /analyze
+
 ```json
 POST /analyze
 {
@@ -99,36 +92,55 @@ POST /analyze
 }
 ```
 
-Response:
+### /validate
+
 ```json
+POST /validate
 {
-  "pattern": "arithmetic",
-  "next_number": [12, 15, 18]
+  "numbers": [2, 3, 4, 5, 6, 8, 8, 11, 16, 11, 18, 32],
+  "prediction": [14, 27, 64]
 }
 ```
 
 ---
 
 ## 🏗️ Project Structure
+
 ```
 app/
-├── core/               # Core pattern logic
-├── models/             # Request/response models
-├── services/           # Learner service layer
-├── api.py              # FastAPI router
-├── main.py             # App entry point
+├── core/               # All analyzers and logic
+│   ├── patterns/
+│   └── pattern_learner.py
+├── models/             # Request/response schemas
+├── services/           # Core service layer
+├── api.py              # Route handler
+├── main.py             # FastAPI entrypoint
+tests/
+└── test_patterns.py    # Pytest suite
 ```
+
+---
+
+## 🧪 Testing
+
+```bash
+pytest
+```
+
+All patterns are tested including arithmetic, interleaved, factorials, and edge cases.
 
 ---
 
 ## 🤝 Contributing
-Pull requests are welcome! Open an issue first to discuss your idea.
+
+Pull requests are welcome. Add new analyzers inside `app/core/patterns/` and register in `ALL_ANALYZERS`.
 
 ---
 
 ## 📄 License
-MIT License
+
+MIT License © 2024
 
 ---
 
-Made with ❤️ using FastAPI
+**Pattern Learner API** — Built with ❤️ using FastAPI.

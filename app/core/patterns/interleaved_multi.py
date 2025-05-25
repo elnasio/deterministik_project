@@ -1,46 +1,59 @@
 from __future__ import annotations
 
+from app.core.patterns.arithmetic import analyze_arithmetic
+from app.core.patterns.fibonacci import analyze_fibonacci
+from app.core.patterns.geometric import analyze_geometric
+from app.core.patterns.prime import analyze_prime
+from app.core.patterns.second_order import analyze_second_order
+
 
 def analyze_interleaved_multi(numbers: list[int], count: int) -> dict | None:
-    if len(numbers) < 6:
+    n = len(numbers)
+    if n < 6:
         return None
 
-    from app.core.patterns import ALL_ANALYZERS
-    best_result = None
-
-    for group_count in range(2, min(5, len(numbers) // 2 + 1)):
+    interleave_base = [
+        analyze_prime,
+        analyze_arithmetic,
+        analyze_geometric,
+        analyze_fibonacci,
+        analyze_second_order,
+    ]
+    max_groups = min(5, n // 2 + 1)
+    results = []
+    for group_count in range(2, max_groups + 1):
         groups = [[] for _ in range(group_count)]
-        for i, val in enumerate(numbers):
-            groups[i % group_count].append(val)
+        for i, v in enumerate(numbers):
+            groups[i % group_count].append(v)
 
-        sub_results = []
-        for group in groups:
-            for analyzer in ALL_ANALYZERS:
-                if analyzer.__name__.startswith("analyze_interleaved"):
-                    continue
-                res = analyzer(group, count)
-                if res:
-                    sub_results.append(res)
+        sub_patterns = []
+        sub_preds = []
+        for grp in groups:
+            matched = False
+            for f in interleave_base:
+                res = f(grp, 1)
+                if res and res.get("next_number"):
+                    sub_patterns.append(res["pattern"])
+                    sub_preds.append(res["next_number"])
+                    matched = True
                     break
-            else:
-                break  # satu grup tidak bisa dianalisis
+            if not matched:
+                break
 
-        if len(sub_results) == group_count:
-            # Gabungkan hasil prediksi
-            pred = [[] for _ in range(group_count)]
-            for i, r in enumerate(sub_results):
-                pred[i] = r["next_number"][:count]
-
+        if len(sub_patterns) == group_count:
             combined = []
             for i in range(count):
-                for g in range(group_count):
-                    if i < len(pred[g]):
-                        combined.append(pred[g][i])
-
-            return {
+                g = i % group_count
+                combined.append(sub_preds[g][0])
+            results.append({
+                "group_count": group_count,
                 "pattern": f"interleaved_{group_count}_way",
-                "sub_patterns": [r["pattern"] for r in sub_results],
+                "sub_patterns": sub_patterns,
                 "next_number": combined[:count]
-            }
-
+            })
+    for r in results:
+        if r["group_count"] == count and len(r["next_number"]) == count:
+            return r
+    if results:
+        return results[0]
     return None

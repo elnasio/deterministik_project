@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from app.core.patterns import ALL_ANALYZERS
+from app.core.patterns.interleaved_multi import analyze_interleaved_multi
 
 
 class PatternLearner:
@@ -44,13 +45,21 @@ class PatternLearner:
                 if len(set(level2_diffs)) == 1:
                     self.level2_diff = level2_diffs[0]
 
-    def analyze(self, numbers: list[int], count: int = 1, degree: int = None) -> dict:
+    def analyze(self, numbers, count, degree=None):
+        # 1. Coba interleaved multi-way dulu (prioritas utama)
+        result = analyze_interleaved_multi(numbers, count)
+        if result:
+            return result
+
+        # 2. Kalau tidak match, baru coba analyzer lain satu per satu (kecuali interleaved_multi)
         for checker in ALL_ANALYZERS:
+            if checker is analyze_interleaved_multi:
+                continue  # skip, sudah dicoba di awal
+            # Kirim parameter degree hanya untuk polynomial
             if checker.__name__ == "analyze_polynomial":
                 result = checker(numbers, count, degree)
             else:
                 result = checker(numbers, count)
-
             if result:
                 return result
 

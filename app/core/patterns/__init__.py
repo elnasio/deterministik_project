@@ -28,32 +28,32 @@ from .second_order import analyze_second_order
 from .triangular import analyze_triangular
 
 ALL_ANALYZERS = [
-    analyze_prime,
-    analyze_arithmetic,
-    analyze_geometric,
-    analyze_fibonacci,
-    analyze_even,
-    analyze_odd,
-    analyze_factorial,
-    analyze_second_order,
-    analyze_repeating,
-    analyze_triangular,
-    analyze_cubic,
-    analyze_modulo_cycle,
-    analyze_digit_repetition,
-    analyze_polynomial,
-    analyze_interleaved,
-    analyze_palindrom,
-    analyze_bit_pattern,
-    analyze_pascal,
-    analyze_power_series,
-    analyze_interleaved_multi,
-    analyze_noise_tolerant,
-    analyze_pascal_grid,
-    analyze_digit_mirror,
-    analyze_digit_sequence,
-    analyze_digit_compression,
-    analyze_digit_logic,
-    analyze_digit_middle_logic,
-    analyze_debug,
+    analyze_interleaved_multi,  # Multi-way interleaved, paling atas!
+    analyze_arithmetic,  # Arithmetic sequence
+    analyze_second_order,  # Level 2 difference
+    analyze_geometric,  # Geometric progression
+    analyze_fibonacci,  # Fibonacci sequence
+    analyze_prime,  # Prime numbers
+    analyze_factorial,  # Factorial
+    analyze_triangular,  # Triangular numbers
+    analyze_cubic,  # Cubic numbers
+    analyze_polynomial,  # General polynomial (degree 2+)
+    analyze_modulo_cycle,  # Modulo/cyclic pattern
+    analyze_repeating,  # Repeating/cycle difference pattern
+    analyze_digit_repetition,  # Repetition in digits
+    analyze_bit_pattern,  # Bit-pattern (2ⁿ−1)
+    analyze_pascal,  # Pascal triangle
+    analyze_power_series,  # Power/base^n
+    analyze_noise_tolerant,  # Noise-tolerant arithmetic
+    analyze_pascal_grid,  # Flattened Pascal grid
+    analyze_digit_mirror,  # Mirror/mountain digits
+    analyze_digit_sequence,  # Digit sequence growth
+    analyze_digit_compression,  # Digit sum/compression
+    analyze_digit_logic,  # Digit logic
+    analyze_digit_middle_logic,  # First + last = middle logic
+    analyze_even,  # Even numbers (letakkan paling bawah)
+    analyze_odd,  # Odd numbers (letakkan paling bawah)
+    analyze_palindrom,  # Palindrome (boleh agak bawah)
+    analyze_interleaved,  # Single interleaved (lama, boleh bawah)
+    analyze_debug,  # Debug/analyzer catch-all (paling akhir)
 ]

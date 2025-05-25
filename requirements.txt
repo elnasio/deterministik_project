@@ -1,4 +1,5 @@
 fastapi~=0.115.12
 uvicorn
 pydantic~=2.11.5
-numpy
+numpy~=2.0.2
+pytest~=8.3.5

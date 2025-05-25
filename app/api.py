@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Body
 
-from app.models.request_model import LearnRequest, AnalyzeRequest
+from app.models.request_model import LearnRequest, AnalyzeRequest, ValidateRequest
 from app.models.response_model import BaseResponse
 from app.services.learner_service import learner_service
 
@@ -41,3 +41,31 @@ def analyze(req: AnalyzeRequest = Body(...)):
     if not result.get("next_number"):
         return BaseResponse(success=False, message="Unable to detect pattern.", data=result)
     return BaseResponse(success=True, message="Pattern analysis successful.", data=result)
+
+
+@router.post("/validate", response_model=BaseResponse)
+def validate_sequence(req: ValidateRequest = Body(...)):
+    # derive count dari jumlah prediksi user
+    count = len(req.prediction)
+
+    # jalankan analisis dengan count tersebut
+    analysis = learner_service.analyze_sequence(
+        req.numbers,
+        count,
+        req.degree
+    )
+    expected = analysis.get("next_number") or []
+
+    # bandingkan list sesuai urutan
+    if expected == req.prediction:
+        return BaseResponse(
+            success=True,
+            message="Cocok",
+            data={"expected": expected}
+        )
+    else:
+        return BaseResponse(
+            success=False,
+            message="Tidak cocok",
+            data={"expected": expected, "provided": req.prediction}
+        )

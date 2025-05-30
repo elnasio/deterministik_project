@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_noise_tolerant(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 4:
@@ -17,10 +19,10 @@ def analyze_noise_tolerant(numbers: list[int], count: int) -> dict | None:
         base = numbers[-1]
         predicted = [base + common_diff * (i + 1) for i in range(max(1, count))]
         return {
-            "pattern": "noise_tolerant_arithmetic",
+            PATTERN: "noise_tolerant_arithmetic",
             "dominant_diff": common_diff,
             "confidence": freq / len(diffs),
-            "next_number": predicted
+            NEXT_NUMBER: predicted
         }
 
     return None

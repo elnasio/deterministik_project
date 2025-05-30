@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def is_prime(n: int) -> bool:
     if n <= 1:
@@ -29,6 +31,6 @@ def analyze_prime(numbers: list[int], count: int) -> dict | None:
             next_numbers.append(current)
 
     return {
-        "pattern": "prime",
-        "next_number": next_numbers
+        PATTERN: "prime",
+        NEXT_NUMBER: next_numbers
     }

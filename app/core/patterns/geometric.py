@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_geometric(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 2 or 0 in numbers:
@@ -13,9 +15,9 @@ def analyze_geometric(numbers: list[int], count: int) -> dict | None:
     if len(set(ratios)) == 1:
         ratio = ratios[0]
         return {
-            "pattern": "geometric",
+            PATTERN: "geometric",
             "ratio": ratio,
-            "next_number": [numbers[-1] * (ratio ** (i + 1)) for i in range(max(1, count))]
+            NEXT_NUMBER: [numbers[-1] * (ratio ** (i + 1)) for i in range(max(1, count))]
         }
 
     return None

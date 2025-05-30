@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import PATTERN, NEXT_NUMBER
+
 
 def is_middle_sum_logic(n: int) -> bool:
     s = str(n)
@@ -25,6 +27,6 @@ def analyze_digit_middle_logic(numbers: list[int], count: int) -> dict | None:
         result.append(composed)
 
     return {
-        "pattern": "middle_digit_sum_of_edges",
-        "next_number": result
+        PATTERN: "middle_digit_sum_of_edges",
+        NEXT_NUMBER: result
     }

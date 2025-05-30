@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import *
+
 
 def analyze_arithmetic(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 2:
@@ -8,8 +10,8 @@ def analyze_arithmetic(numbers: list[int], count: int) -> dict | None:
     if len(set(diffs)) == 1:
         step = diffs[0]
         return {
-            "pattern": "arithmetic",
-            "diff": step,
-            "next_number": [numbers[-1] + step * (i + 1) for i in range(max(1, count))]
+            PATTERN: "arithmetic",
+            DIFF: step,
+            NEXT_NUMBER: [numbers[-1] + step * (i + 1) for i in range(max(1, count))]
         }
     return None

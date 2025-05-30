@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import *
+
 
 def analyze_digit_compression(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 3:
@@ -19,9 +21,9 @@ def analyze_digit_compression(numbers: list[int], count: int) -> dict | None:
         base = sum(last_digits)
         result = [base + step * (i + 1) for i in range(max(1, count))]
         return {
-            "pattern": "digit_compression_sum",
+            PATTERN: "digit_compression_sum",
             "digit_sum_step": step,
-            "next_number": result
+            NEXT_NUMBER: result
         }
 
     return None

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def count_odd_digits(n: int) -> int:
     return sum(1 for d in str(n) if int(d) % 2 == 1)
@@ -28,8 +30,8 @@ def analyze_digit_logic(numbers: list[int], count: int) -> dict | None:
         step = diffs[0]
         last = products[-1]
         return {
-            "pattern": "edge_digit_product_growth",
-            "next_number": [last + step * (i + 1) for i in range(count)],
+            PATTERN: "edge_digit_product_growth",
+            NEXT_NUMBER: [last + step * (i + 1) for i in range(count)],
             "product_step": step
         }
 

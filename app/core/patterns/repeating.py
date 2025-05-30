@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_repeating(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 4:
@@ -25,7 +27,7 @@ def analyze_repeating(numbers: list[int], count: int) -> dict | None:
         result.append(current)
 
     return {
-        "pattern": "repeating_differences",
+        PATTERN: "repeating_differences",
         "diff_pattern": pattern,
-        "next_number": result
+        NEXT_NUMBER: result
     }

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def is_sequential_digit_growth(n: int) -> bool:
     s = str(n)
@@ -17,6 +19,6 @@ def analyze_digit_sequence(numbers: list[int], count: int) -> dict | None:
         result.append(int(seq))
 
     return {
-        "pattern": "digit_sequential_growth",
-        "next_number": result
+        PATTERN: "digit_sequential_growth",
+        NEXT_NUMBER: result
     }

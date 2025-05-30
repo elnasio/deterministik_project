@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+from app.core.constants import *
+
 
 def analyze_debug(numbers: list[int], count: int) -> dict:
     if len(numbers) < 2:
         return {
-            "pattern": "unknown",
-            "next_number": None,
-            "debug": {
+            PATTERN: "unknown",
+            NEXT_NUMBER: None,
+            DEBUG_LABEL: {
                 "message": "Not enough data to analyze."
             }
         }
@@ -15,9 +17,9 @@ def analyze_debug(numbers: list[int], count: int) -> dict:
     level2_diffs = [diffs[i + 1] - diffs[i] for i in range(len(diffs) - 1)] if len(diffs) > 1 else []
 
     return {
-        "pattern": "unknown",
-        "next_number": None,
-        "debug": {
+        PATTERN: "unknown",
+        NEXT_NUMBER: None,
+        DEBUG_LABEL: {
             "diffs": diffs,
             "level2_diffs": level2_diffs,
             "note": "No known pattern matched. Use debug info to create new pattern module."

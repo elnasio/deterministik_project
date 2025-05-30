@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_power_series(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 3:
@@ -11,8 +13,8 @@ def analyze_power_series(numbers: list[int], count: int) -> dict | None:
         if powers == numbers:
             next_vals = [base ** (len(numbers) + i) for i in range(max(1, count))]
             return {
-                "pattern": f"power_series_base_{base}",
-                "next_number": next_vals
+                PATTERN: f"power_series_base_{base}",
+                NEXT_NUMBER: next_vals
             }
 
     return None

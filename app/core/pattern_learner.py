@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from app.core.constants import *
 from app.core.patterns import ALL_ANALYZERS
 from app.core.patterns.interleaved_multi import analyze_interleaved_multi
 
@@ -84,8 +85,8 @@ class PatternLearner:
 
     def get_state(self) -> dict:
         return {
-            "sequence": self.sequence,
-            "diff": self.diff,
+            SEQUENCE_LABEL: self.sequence,
+            DIFF: self.diff,
             "level2_diff": self.level2_diff,
             "is_prime_sequence": self.is_prime_sequence
         }

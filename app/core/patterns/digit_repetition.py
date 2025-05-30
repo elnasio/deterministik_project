@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import PATTERN, NEXT_NUMBER
+
 
 def analyze_digit_repetition(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 2:
@@ -21,9 +23,9 @@ def analyze_digit_repetition(numbers: list[int], count: int) -> dict | None:
         base_len = len(patterns[-1])
         next_numbers = [int(digit * (base_len + i + 1)) for i in range(max(1, count))]
         return {
-            "pattern": "digit_repetition",
+            PATTERN: "digit_repetition",
             "repeated_digit": digit,
-            "next_number": next_numbers
+            NEXT_NUMBER: next_numbers
         }
 
     return None

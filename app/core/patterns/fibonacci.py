@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_fibonacci(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 3:
@@ -12,8 +14,8 @@ def analyze_fibonacci(numbers: list[int], count: int) -> dict | None:
             a, b = b, a + b
             result.append(b)
         return {
-            "pattern": "fibonacci",
-            "next_number": result
+            PATTERN: "fibonacci",
+            NEXT_NUMBER: result
         }
 
     return None

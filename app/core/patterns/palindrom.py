@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def is_numeric_palindrome(n: int) -> bool:
     s = str(n)
@@ -19,6 +21,6 @@ def analyze_palindrom(numbers: list[int], count: int) -> dict | None:
         next_num += 1
 
     return {
-        "pattern": "numeric_palindrome",
-        "next_number": result
+        PATTERN: "numeric_palindrome",
+        NEXT_NUMBER: result
     }

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_second_order(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 3:
@@ -17,9 +19,9 @@ def analyze_second_order(numbers: list[int], count: int) -> dict | None:
             current += current_diff
             next_numbers.append(current)
         return {
-            "pattern": "second_order",
+            PATTERN: "second_order",
             "level2_diff": level2_diffs[0],
-            "next_number": next_numbers
+            NEXT_NUMBER: next_numbers
         }
 
     return None

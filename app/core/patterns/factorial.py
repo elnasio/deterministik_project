@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import math
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
+
 def analyze_factorial(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 2:
         return None
@@ -14,6 +17,6 @@ def analyze_factorial(numbers: list[int], count: int) -> dict | None:
 
     start = len(numbers) + 1
     return {
-        "pattern": "factorial",
-        "next_number": [math.factorial(start + i) for i in range(max(1, count))]
+        PATTERN: "factorial",
+        NEXT_NUMBER: [math.factorial(start + i) for i in range(max(1, count))]
     }

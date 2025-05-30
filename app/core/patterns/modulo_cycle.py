@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_modulo_cycle(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 4:
@@ -22,8 +24,8 @@ def analyze_modulo_cycle(numbers: list[int], count: int) -> dict | None:
                     current += step
                     next_values.append(current)
                 return {
-                    "pattern": f"modulo_cycle_mod_{mod}",
+                    PATTERN: f"modulo_cycle_mod_{mod}",
                     "mod_pattern": pattern,
-                    "next_number": next_values
+                    NEXT_NUMBER: next_values
                 }
     return None

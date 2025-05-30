@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_polynomial(numbers: list[int], count: int, degree: int | None = None) -> dict | None:
     if degree is None:
@@ -26,8 +28,8 @@ def analyze_polynomial(numbers: list[int], count: int, degree: int | None = None
     rounded = [int(round(p)) for p in predicted]
 
     return {
-        "pattern": f"polynomial_deg_{degree}",
+        PATTERN: f"polynomial_deg_{degree}",
         "coefficients": coeffs.tolist(),
-        "next_number": rounded,
+        NEXT_NUMBER: rounded,
         "source": "polynomial"
     }

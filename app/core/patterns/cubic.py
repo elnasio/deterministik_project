@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import *
+
 
 def is_perfect_cube(n: int) -> bool:
     root = round(n ** (1 / 3))
@@ -21,8 +23,8 @@ def analyze_cubic(numbers: list[int], count: int) -> dict | None:
     if all(roots[i + 1] - roots[i] == step for i in range(len(roots) - 1)):
         next_roots = [roots[-1] + step * (i + 1) for i in range(max(1, count))]
         return {
-            "pattern": "cubic",
-            "next_number": [r ** 3 for r in next_roots]
+            PATTERN: "cubic",
+            NEXT_NUMBER: [r ** 3 for r in next_roots]
         }
 
     return None

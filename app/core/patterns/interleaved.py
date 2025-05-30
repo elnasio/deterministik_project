@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def analyze_interleaved(numbers: list[int], count: int) -> dict | None:
     if len(numbers) < 6:
@@ -25,17 +27,17 @@ def analyze_interleaved(numbers: list[int], count: int) -> dict | None:
 
     if result_even and result_odd:
         # gabungkan hasil prediksi secara selang-seling
-        even_pred = result_even["next_number"]
-        odd_pred = result_odd["next_number"]
+        even_pred = result_even[NEXT_NUMBER]
+        odd_pred = result_odd[NEXT_NUMBER]
         interleaved = []
         for i in range(max(1, count)):
             interleaved.append(even_pred[i % len(even_pred)])
             interleaved.append(odd_pred[i % len(odd_pred)])
         return {
-            "pattern": "interleaved",
+            PATTERN: "interleaved",
             "even_pattern": result_even["pattern"],
             "odd_pattern": result_odd["pattern"],
-            "next_number": interleaved[:count]  # jika count = jumlah total yang diinginkan
+            NEXT_NUMBER: interleaved[:count]  # jika count = jumlah total yang diinginkan
         }
 
     return None

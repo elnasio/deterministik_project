@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import math
 
+from app.core.constants import PATTERN, NEXT_NUMBER
+
+
 def generate_pascal_rows(limit: int) -> list[list[int]]:
     return [[math.comb(r, k) for k in range(r + 1)] for r in range(limit)]
 
@@ -21,9 +24,9 @@ def analyze_pascal_grid(numbers: list[int], count: int) -> dict | None:
             extended_flat = flatten_rows(new_rows)
             next_vals = extended_flat[flat_len:flat_len + count]
             return {
-                "pattern": "pascal_flattened_grid",
+                PATTERN: "pascal_flattened_grid",
                 "rows_used": row_count,
-                "next_number": next_vals
+                NEXT_NUMBER: next_vals
             }
 
     return None

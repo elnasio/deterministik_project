@@ -1,0 +1,7 @@
+PATTERN = "pattern"
+DIFF = "diff"
+NEXT_NUMBER = "next_number"
+EXPECTED = "expected"
+PROVIDED = "provided"
+DEBUG_LABEL = "debug"
+SEQUENCE_LABEL = "sequence"

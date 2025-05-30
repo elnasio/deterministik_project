@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import PATTERN, NEXT_NUMBER
+
 
 def is_mirror_growth(n: int) -> bool:
     s = str(n)
@@ -28,7 +30,7 @@ def analyze_digit_mirror(numbers: list[int], count: int) -> dict | None:
         result.append(int(mirror))
 
     return {
-        "pattern": "digit_mirror",
+        PATTERN: "digit_mirror",
         "example": mirror,
-        "next_number": result
+        NEXT_NUMBER: result
     }

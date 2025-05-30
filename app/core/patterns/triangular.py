@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from app.core.constants import NEXT_NUMBER, PATTERN
+
 
 def is_triangular(n: int) -> bool:
     # Triangular number formula: n(n+1)/2 = x => solve for n
@@ -30,8 +32,8 @@ def analyze_triangular(numbers: list[int], count: int) -> dict | None:
         start_idx = triangulars.index(numbers[0])
         if triangulars[start_idx:start_idx + len(numbers)] == numbers:
             return {
-                "pattern": "triangular",
-                "next_number": triangulars[start_idx + len(numbers): start_idx + len(numbers) + max(1, count)]
+                PATTERN: "triangular",
+                NEXT_NUMBER: triangulars[start_idx + len(numbers): start_idx + len(numbers) + max(1, count)]
             }
     except ValueError:
         return None

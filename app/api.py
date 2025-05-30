@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Body
 
+from app.core.constants import *
 from app.models.request_model import LearnRequest, AnalyzeRequest, ValidateRequest
 from app.models.response_model import BaseResponse
 from app.services.learner_service import learner_service
@@ -61,11 +62,11 @@ def validate_sequence(req: ValidateRequest = Body(...)):
         return BaseResponse(
             success=True,
             message="Cocok",
-            data={"expected": expected}
+            data={EXPECTED: expected}
         )
     else:
         return BaseResponse(
             success=False,
             message="Tidak cocok",
-            data={"expected": expected, "provided": req.prediction}
+            data={EXPECTED: expected, PROVIDED: req.prediction}
         )

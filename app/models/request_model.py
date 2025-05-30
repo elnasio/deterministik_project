@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class LearnRequest(BaseModel):
@@ -28,3 +28,8 @@ class ValidateRequest(BaseModel):
     numbers: List[int]
     degree: Optional[int] = None
     prediction: List[int]
+
+
+class AnalyzeMLRequest(BaseModel):
+    numbers: List[int] = Field(..., min_items=5)
+    top_k: Optional[int] = Field(1, ge=1, le=5)

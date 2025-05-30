@@ -1,5 +1,23 @@
+# === Core Web Framework ===
 fastapi~=0.115.12
-uvicorn
-pydantic~=2.11.5
+uvicorn[standard]  # untuk server ASGI dengan auto-reload, gunicorn, dsb
+
+# === Data & ML Computation ===
 numpy~=2.0.2
+
+# === Pydantic Model Handling ===
+pydantic~=2.11.5
+
+# === Development & Testing ===
 pytest~=8.3.5
+python-dotenv  # untuk environment config
+
+# === Optional: File Upload / CORS / Static Handling ===
+aiofiles
+python-multipart
+
+# === Logging (lebih baik dari logging bawaan) ===
+loguru
+
+# === Optional: Jupyter (jika digunakan eksplorasi dataset/model) ===
+jupyterlab
